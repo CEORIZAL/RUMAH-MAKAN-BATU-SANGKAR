@@ -1,0 +1,1211 @@
+/* ==============================
+   PENGATURAN UMUM
+============================== */
+
+:root {
+  --batu-yellow: #ffc451;
+  --batu-red: #823329;
+  --batu-dark: #301b18;
+  --batu-cream: #faf7f2;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  background: #fff;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--batu-yellow);
+  outline-offset: 5px;
+}
+
+.section-space {
+  padding: 85px 0;
+}
+
+.section-cream {
+  background: var(--batu-cream);
+}
+
+.section-heading {
+  margin-bottom: 40px;
+}
+
+.section-heading > span {
+  display: block;
+  color: #8a6650;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.section-heading h2 {
+  color: #30231e;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* ==============================
+   HEADER DAN NAVIGASI
+============================== */
+
+#header {
+  background: rgba(80, 80, 80, 0.3);
+  backdrop-filter: blur(3px);
+  transition: background 0.3s;
+}
+
+#header.scrolled {
+  background: rgba(28, 24, 22, 0.96);
+}
+
+#header .navbar {
+  padding: 20px 0;
+}
+
+.batu-brand {
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+}
+
+.brand-small {
+  color: var(--batu-yellow);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  margin-bottom: 4px;
+}
+
+.brand-name {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.brand-dot {
+  color: var(--batu-yellow);
+}
+
+#header .navbar-nav {
+  gap: 20px;
+}
+
+#header .nav-link {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+#header .nav-link:hover,
+#header .nav-link.active {
+  color: var(--batu-yellow);
+}
+
+/* ==============================
+   HOME / SLIDESHOW
+============================== */
+
+#hero {
+  height: 100vh;
+  height: 100svh;
+  min-height: 620px;
+  background: #222;
+}
+
+#heroCarousel,
+#heroCarousel .carousel-inner,
+#heroCarousel .carousel-item {
+  height: 100%;
+}
+
+#heroCarousel {
+  position: relative;
+  isolation: isolate;
+}
+
+#heroCarousel .carousel-item {
+  position: relative;
+}
+
+/* Foto memenuhi layar */
+#heroCarousel .hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Lapisan gelap di atas foto */
+#heroCarousel .carousel-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.42),
+    rgba(0, 0, 0, 0.6)
+  );
+}
+
+/* Tulisan di tengah layar */
+.hero-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 0 30px;
+  z-index: 2;
+  text-align: center;
+  pointer-events: none;
+}
+
+.hero-caption h1 {
+  max-width: 1250px;
+  margin: 0 auto 25px;
+  color: white;
+  font-size: clamp(34px, 4.5vw, 70px);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.hero-caption h1 span {
+  color: var(--batu-yellow);
+}
+
+.hero-caption p {
+  color: white;
+  font-size: clamp(18px, 2vw, 28px);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Pilihan slide berkumpul di tengah */
+#heroCarousel .hero-indicators {
+  bottom: 25px;
+  margin: 0;
+  padding: 0 20px;
+  gap: 35px;
+  justify-content: center;
+  z-index: 4;
+}
+
+#heroCarousel .hero-indicators button {
+  position: relative;
+  flex: 0 1 auto;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 15px 0;
+  border: 0;
+  background: transparent;
+  color: white;
+  text-indent: 0;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 700;
+  opacity: 0.55;
+  transition: opacity 0.3s;
+}
+
+/* Garis pendek di tengah bawah tulisan */
+#heroCarousel .hero-indicators button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 4px;
+  border-radius: 4px;
+  background: transparent;
+}
+
+#heroCarousel .hero-indicators button.active {
+  opacity: 1;
+}
+
+#heroCarousel .hero-indicators button.active::after {
+  background: var(--batu-yellow);
+}
+
+#heroCarousel .hero-indicators button:hover {
+  opacity: 1;
+}
+
+/* Tombol jeda */
+.hero-pause {
+  position: absolute;
+  right: 20px;
+  bottom: 110px;
+  z-index: 4;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.25);
+  color: white;
+  font-size: 12px;
+}
+
+/* ==============================
+   TENTANG KAMI
+============================== */
+
+.about-photo {
+  width: 100%;
+  max-height: 460px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.about-content h3 {
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.45;
+  margin-bottom: 20px;
+}
+
+.about-content p {
+  color: #666;
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+.batu-button {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 5px;
+  background: var(--batu-yellow);
+  color: #30231e;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.batu-button:hover {
+  background: #edb13a;
+  color: #30231e;
+}
+
+/* ==============================
+   MENU
+============================== */
+
+.menu-card {
+  height: 100%;
+  padding: 35px;
+  border: 1px solid #e8e1d8;
+  border-radius: 10px;
+  background: white;
+}
+
+.menu-number {
+  color: var(--batu-red);
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.menu-card h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 15px 0;
+}
+
+.menu-card p {
+  color: #666;
+  line-height: 1.8;
+}
+
+.menu-card .placeholder-info {
+  font-size: 14px;
+  margin-bottom: 0;
+  color: #806b60;
+}
+
+/* ==============================
+   GALERI
+============================== */
+
+.gallery-card {
+  margin: 0;
+}
+
+.gallery-card a {
+  display: block;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.gallery-card img {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.gallery-card a:hover img {
+  transform: scale(1.04);
+}
+
+.gallery-card figcaption {
+  padding-top: 15px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* ==============================
+   KONTAK
+============================== */
+
+.contact-card {
+  height: 100%;
+  border-left: 3px solid var(--batu-yellow);
+  padding: 5px 0 5px 20px;
+}
+
+.contact-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.contact-card p {
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+
+#footer {
+  color: white;
+}
+
+.footer-top {
+  padding: 55px 0;
+  background: var(--batu-red);
+}
+
+.footer-top h2 {
+  font-size: 23px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.footer-top h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.footer-top p {
+  color: #f4e6e1;
+  line-height: 1.8;
+  max-width: 500px;
+  margin-bottom: 0;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+
+.footer-links a {
+  color: white;
+}
+
+.footer-links a:hover {
+  color: var(--batu-yellow);
+}
+
+.footer-bottom {
+  background: var(--batu-dark);
+  padding: 23px 0;
+}
+
+.footer-bottom p {
+  margin: 0 0 6px;
+}
+
+.footer-bottom small,
+.footer-bottom a {
+  color: #e4c8b8;
+}
+
+/* ==============================
+   TAMPILAN TABLET DAN HP
+============================== */
+
+@media (max-width: 1199px) {
+  #header .navbar-collapse {
+    background: rgba(28, 24, 22, 0.97);
+    border-radius: 8px;
+    padding: 18px;
+    margin-top: 18px;
+  }
+
+  #header .navbar-nav {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 767px) {
+  html {
+    scroll-padding-top: 90px;
+  }
+
+  .section-space {
+    padding: 60px 0;
+  }
+
+  .brand-name {
+    font-size: 20px;
+  }
+
+  .brand-small {
+    font-size: 9px;
+  }
+
+  #header .navbar {
+    padding: 16px 0;
+  }
+
+  .hero-caption {
+    padding: 0 20px;
+  }
+
+  #heroCarousel .hero-indicators {
+    gap: 20px;
+    bottom: 22px;
+    padding: 0 15px;
+  }
+
+  #heroCarousel .hero-indicators button {
+    font-size: 13px;
+  }
+
+  .about-content h3 {
+    font-size: 24px;
+  }
+
+  .gallery-card img {
+    height: 260px;
+  }
+
+  .menu-card {
+    padding: 25px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+/* MENU BATU SANGKAR */
+.batu-menu-item {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e8e1d8;
+  border-radius: 10px;
+  color: #30231e;
+  text-decoration: none;
+}
+
+.batu-menu-photo {
+  position: relative;
+  overflow: hidden;
+}
+
+.batu-menu-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.batu-menu-item:hover .batu-menu-photo img {
+  transform: scale(1.05);
+}
+
+.batu-menu-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 7px 14px;
+  border-radius: 20px;
+  background: #ffc451;
+  color: #30231e;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.batu-menu-zoom {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font-size: 26px;
+}
+
+.batu-menu-info {
+  padding: 22px;
+}
+
+.batu-menu-info h3 {
+  color: #30231e;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.batu-menu-info p {
+  color: #823329;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.batu-menu-note {
+  color: #807369;
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 25px 0 0;
+}
+/* ==============================
+   KONTAK BATU SANGKAR
+============================== */
+
+.batu-map {
+  margin-bottom: 45px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #eee;
+}
+
+.batu-map iframe {
+  display: block;
+  width: 100%;
+}
+
+.batu-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.batu-contact-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 54px;
+  height: 54px;
+  border-radius: 6px;
+  background: #ffc451;
+  color: #30231e;
+  font-size: 29px;
+}
+
+.batu-contact-item h3 {
+  margin: 0 0 10px;
+  color: #30231e;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.batu-contact-item p {
+  margin: 0 0 4px;
+  color: #666;
+  line-height: 1.8;
+}
+
+.batu-contact-item a {
+  color: #666;
+}
+
+.batu-contact-item a:hover {
+  color: #823329;
+}
+
+/* Formulir */
+.batu-contact-form .form-control {
+  min-height: 54px;
+  padding: 15px 18px;
+  border: 1px solid #ddd;
+  border-radius: 0;
+  background: #fff;
+  color: #333;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.batu-contact-form textarea.form-control {
+  min-height: 200px;
+  resize: vertical;
+}
+
+.batu-contact-form .form-control:focus {
+  border-color: #b88524;
+  box-shadow: 0 0 0 3px rgba(255, 196, 81, 0.2);
+}
+
+.batu-send-button {
+  padding: 14px 30px;
+  border: 0;
+  border-radius: 5px;
+  background: #ffc451;
+  color: #30231e;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.batu-send-button:hover {
+  background: #edb13a;
+}
+
+.batu-form-note {
+  margin: 14px 0 0;
+  color: #777;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* ==============================
+   FOOTER BATU SANGKAR
+============================== */
+
+.batu-footer {
+  color: #fff;
+}
+
+.batu-footer-top {
+  padding: 60px 0;
+  background: #823329;
+}
+
+.batu-footer h3,
+.batu-footer h4 {
+  color: #fff;
+  line-height: 1.5;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.batu-footer h3 {
+  font-size: 22px;
+}
+
+.batu-footer h4 {
+  font-size: 18px;
+}
+
+.batu-footer p {
+  color: #f4e6e1;
+  font-size: 14px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+.batu-footer strong {
+  display: block;
+  color: #fff;
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+
+.batu-footer a {
+  color: #ffc451;
+}
+
+.batu-footer a:hover {
+  color: #fff;
+}
+
+.batu-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.batu-footer-links li {
+  margin-bottom: 12px;
+}
+
+.batu-footer-links a {
+  color: #f4e6e1;
+  font-size: 14px;
+}
+
+.batu-footer-links a:hover {
+  color: #ffc451;
+}
+
+.batu-footer-bottom {
+  padding: 22px 0;
+  background: #301b18;
+}
+
+.batu-footer-bottom-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.batu-footer-bottom p {
+  margin: 0;
+}
+
+.batu-footer-bottom p span {
+  color: #ffc451;
+  font-weight: 600;
+}
+
+.batu-footer-bottom small {
+  display: block;
+  color: #d5c3ba;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+.batu-footer .batu-back-top {
+  display: grid;
+  place-items: center;
+  flex: 0 0 44px;
+  height: 44px;
+  border-radius: 5px;
+  background: #ffc451;
+  color: #30231e;
+  font-size: 25px;
+}
+
+@media (max-width: 767px) {
+  .batu-map iframe {
+    height: 320px;
+  }
+
+  .batu-footer-top {
+    padding: 40px 0;
+  }
+
+  .batu-footer h3,
+  .batu-footer h4 {
+    margin-bottom: 18px;
+  }
+}
+.batu-footer a {
+  overflow-wrap: anywhere;
+}
+.batu-order-button {
+  display: block;
+  width: 100%;
+  padding: 16px 24px;
+  border: 0;
+  border-radius: 8px;
+  background: #ffc451;
+  color: #4b281e;
+  font-size: 18px;
+  font-weight: 700;
+}
+/* =====================================
+   TAMPILAN PEMESANAN BATU SANGKAR
+===================================== */
+
+.batu-order-intro {
+  margin: 16px 0 0;
+  color: #74665d;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* Kartu informasi sebelah kiri */
+.batu-order-information {
+  height: 100%;
+  padding: 30px;
+  border-radius: 14px;
+  background: #faf3e7;
+}
+
+.batu-order-information > h3 {
+  margin: 0 0 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #e2cdb1;
+  color: #4b281e;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.batu-order-contact {
+  margin-bottom: 22px;
+}
+
+.batu-order-contact strong {
+  display: block;
+  margin-bottom: 7px;
+  color: #4b281e;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.batu-order-contact p {
+  margin: 0;
+  color: #6d574b;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.batu-order-contact a {
+  color: #823329;
+}
+
+/* Cara memesan */
+.batu-order-steps {
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid #e2cdb1;
+}
+
+.batu-order-steps h4 {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: #823329;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.batu-order-steps ol {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.batu-order-steps li {
+  margin-bottom: 12px;
+  padding-left: 5px;
+  color: #6d574b;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.batu-order-steps li:last-child {
+  margin-bottom: 0;
+}
+
+.batu-order-steps li::marker {
+  color: #823329;
+  font-weight: 700;
+}
+
+/* Kartu formulir sebelah kanan */
+.batu-order-form {
+  height: 100%;
+  padding: 30px;
+  border: 1px solid #ded5cd;
+  border-radius: 14px;
+  background: #fff;
+}
+
+/* Jarak antar isian */
+.batu-order-field {
+  margin-bottom: 24px;
+}
+
+.batu-order-field label {
+  display: block;
+  margin-bottom: 10px;
+  color: #4b281e;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.batu-order-field label span {
+  color: #82766d;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* Kotak isian */
+.batu-order-form .form-control {
+  min-height: 54px;
+  padding: 14px 17px;
+  border: 1px solid #cfc6bf;
+  border-radius: 8px;
+  background: #fff;
+  color: #352720;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.batu-order-form textarea.form-control {
+  resize: vertical;
+}
+
+.batu-order-form .form-control::placeholder {
+  color: #978c83;
+}
+
+.batu-order-form .form-control:focus {
+  border-color: #b17a25;
+  box-shadow: 0 0 0 3px rgba(255, 196, 81, 0.2);
+}
+
+/* Tombol */
+.batu-order-button {
+  display: block;
+  width: 100%;
+  padding: 16px 24px;
+  border: 0;
+  border-radius: 8px;
+  background: #ffc451;
+  color: #4b281e;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.batu-order-button:hover {
+  background: #efb43c;
+}
+
+.batu-order-button:focus-visible {
+  outline: 3px solid #823329;
+  outline-offset: 4px;
+}
+
+/* Keterangan di bawah tombol */
+.batu-order-confirmation {
+  margin: 15px 0 0;
+  color: #80736a;
+  font-size: 12px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+/* Tampilan HP */
+@media (max-width: 767px) {
+  .batu-order-information,
+  .batu-order-form {
+    padding: 22px;
+  }
+
+  .batu-order-information > h3 {
+    font-size: 25px;
+  }
+
+  .batu-order-field label {
+    font-size: 15px;
+  }
+
+  .batu-order-button {
+    font-size: 16px;
+  }
+}
+/* Warna pemesanan yang lebih tegas */
+.batu-order-information {
+  background: #823329;
+  border: 1px solid #702a22;
+  box-shadow: 0 10px 28px rgba(82, 35, 26, 0.12);
+}
+
+.batu-order-information > h3 {
+  color: #fff;
+  border-bottom-color: rgba(255, 196, 81, 0.4);
+}
+
+.batu-order-contact strong {
+  color: #ffc451;
+}
+
+.batu-order-contact p,
+.batu-order-contact a {
+  color: #fff4e8;
+}
+
+.batu-order-contact a:hover {
+  color: #ffc451;
+}
+
+.batu-order-steps {
+  border-top-color: rgba(255, 196, 81, 0.4);
+}
+
+.batu-order-steps h4 {
+  background: #ffc451;
+  color: #4b281e;
+}
+
+.batu-order-steps li {
+  color: #fff4e8;
+}
+
+.batu-order-steps li::marker {
+  color: #ffc451;
+}
+
+/* Formulir putih dengan aksen marun */
+.batu-order-form {
+  border: 1px solid #e2d5ca;
+  border-top: 5px solid #823329;
+  box-shadow: 0 10px 28px rgba(82, 35, 26, 0.06);
+}
+
+.batu-order-form .form-control {
+  background: #fffcf8;
+}
+
+.batu-order-form .form-control:focus {
+  background: #fff;
+  border-color: #823329;
+  box-shadow: 0 0 0 3px rgba(130, 51, 41, 0.12);
+}
+
+.batu-order-button {
+  background: #ffc451;
+  color: #4b281e;
+}
+
+.batu-order-button:hover {
+  background: #efb43c;
+}
+#heroPause {
+  display: none;
+}
+.struktur-organisasi-img {
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid #e8e1d8;
+  border-radius: 12px;
+  background: #fff;
+  cursor: zoom-in;
+}
+.struktur-pdf {
+  display: block;
+  width: 100%;
+  height: 620px;
+  border: 1px solid #ded5cd;
+  border-radius: 12px;
+  background: #faf7f2;
+}
+
+.struktur-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 24px;
+}
+
+.struktur-open,
+.struktur-download {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.struktur-open {
+  border: 1px solid #823329;
+  color: #823329;
+  background: #fff;
+}
+
+.struktur-open:hover {
+  background: #823329;
+  color: #fff;
+}
+
+.struktur-download {
+  border: 1px solid #ffc451;
+  background: #ffc451;
+  color: #4b281e;
+}
+
+.struktur-download:hover {
+  background: #efb43c;
+  color: #4b281e;
+}
+
+@media (max-width: 767px) {
+  .struktur-pdf {
+    height: 420px;
+  }
+}
+/* Beranda satu foto */
+.batu-hero-static {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.batu-hero-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -2;
+}
+
+.batu-hero-static::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.65)
+  );
+  z-index: -1;
+}
